@@ -1,0 +1,69 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 mat-dialog-title>
+    Pokemon details: {{ pokemonName }}
+  </h1>
+
+  <div>
+    <table width="100%">
+      <tr>
+        <td>Type</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; border-top: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of type"> {{value.type.name}} </span>
+        </td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; border-top: 1px solid grey; padding: 0px !important">Double Damage To</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; border-top: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of double_damage_to"> {{value}} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Weight</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important"> {{ weight }}</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">Double Damage From</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of double_damage_from"> {{value}} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Height</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">{{ height }}</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">Half Damage To</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of half_damage_to"> {{value}} </span>
+        </td>
+      </tr>
+      <tr>
+        <td>Signature ability</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; border-bottom: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of signature_ability"> {{value.ability.name}} </span>
+        </td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">Half Damage From</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of half_damage_from"> {{value}} </span>
+        </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td ></td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">No Damage From</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of no_damage_from"> {{value}} </span>
+        </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td ></td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; border-bottom: 1px solid grey; padding: 0px !important">No Damage To</td>
+        <td style="border-left: 1px solid grey; border-right: 1px solid grey; border-bottom: 1px solid grey; padding: 0px !important">
+          <span *ngFor="let value of double_damage_to"> {{value}} </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  
+
+</div>
+<div style="text-align: right">
+  <button  mat-button (click)="onCloseClick()">Close</button>
+</div>

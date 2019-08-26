@@ -1,0 +1,80 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+  
+  <!-- Search area -->
+  <div>
+      
+    <mat-form-field style="padding-right: 10px">
+      <input matInput type="text" placeholder="Name" [formControl]="filterName" (keyup)="enableDisableInput()" (keydown.enter)="doFilter()">
+    </mat-form-field>
+    <mat-form-field  style="padding-right: 10px">
+      <input matInput type="text" placeholder="Type" [formControl]="filterType" (keyup)="enableDisableInput()" (keydown.enter)="doFilter()">
+    </mat-form-field>
+    <button mat-button (click)="doFilter()">Search</button>
+  
+  </div>
+
+  <br />
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:100%; padding-left: 10%; padding-right: 10%">
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center"> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- Types Column -->
+    <ng-container matColumnDef="types">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center"> Types </th>
+      <td mat-cell *matCellDef="let row">  
+        <span *ngFor="let value of row.types"> {{value.type.name}} </span>
+      </td>
+    </ng-container>
+  
+    <!-- Height / Weight Column -->
+    <ng-container matColumnDef="heightWeight">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center"> Height / Weight </th>
+      <td mat-cell *matCellDef="let row"> {{row.heightWeight}} </td>
+    </ng-container>
+   
+    <!-- Abilities Column -->
+    <ng-container matColumnDef="abilities">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center"> Signature abilities </th>
+      <td mat-cell *matCellDef="let row"> 
+        <span *ngFor="let value of row.abilities"> {{value.ability.name}} </span>
+      </td>
+    </ng-container>
+
+    <!-- Base experience -->
+    <ng-container matColumnDef="base_experience">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center"> Base experience </th>
+      <td mat-cell *matCellDef="let row"> {{row.base_experience}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    
+  </table>
+  
+  <mat-paginator 
+    #paginator
+    [length]="length"
+    [pageSizeOptions]="[5, 10, 25, 100]" 
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    (page)="pageEvent = handlePage($event)"
+    style="text-align:center; padding-left: 10%; padding-right: 10%">
+    ></mat-paginator>
+  
+    <mat-progress-spinner style="margin:0 auto;" [mode]="'indeterminate'" *ngIf="loading">
+  </mat-progress-spinner>
+
+  <div>{{errorMessage}}</div>
+</div>
+<br />
+
