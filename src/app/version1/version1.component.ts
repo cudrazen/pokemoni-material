@@ -164,6 +164,7 @@ export class Version1Component implements OnInit, AfterViewInit{
   ngAfterViewInit() {
     
   }
+  
 
   public handlePage(e: any) {
     if (!this.filterOn){
